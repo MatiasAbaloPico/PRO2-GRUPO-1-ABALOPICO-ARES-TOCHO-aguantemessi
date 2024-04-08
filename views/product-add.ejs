@@ -18,64 +18,7 @@
 
 <body>
 	<!-- Header -->
-	<header class="main-header">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-5 col-md-2">
-					<a href="/" class="main-header_home-link">
-						<img src="/images/logo-mercado-liebre.svg">
-					</a>
-				</div>
-	
-				<div class="col-7 col-md-6">
-					<form action="" method="GET" class="search-form">
-						<input type="text" name="search" placeholder="Buscar productos, marcas y más"
-							class="search-form_input">
-						<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
-					</form>
-				</div>
-	
-				<div class="col-12 col-md-4">
-					<a class="main-header_credit-link">
-						<i class="fas fa-hand-holding-usd"></i>
-						Todas las opiniones en un solo lugar.
-					</a>
-				</div>
-			</div>
-	
-			<button class="btn-toggle-navbar">
-				<i class="fas fa-bars"></i>
-			</button>
-	
-			<nav class="main-navbar">
-				<ul class="left-navbar">
-					<li><a href="/">Todos los productos</a></li>
-					<li><a href="">Cargar productos</a></li>
-				</ul>
-	
-				<ul class="right-navbar">
-					<li><a href="profile">
-							Nombre del usuario <i class="fas fa-user"></i>
-						</a>
-					</li>
-					<li>
-						<form action="" method="post">
-							<button class="logout" type="submit">
-								Cerrar sesión <i class="fas fa-sign-in-alt"></i>
-							</button>
-						</form>
-					</li>
-					<!-- Solo deslogueado <li>
-							<a href="register.html">Creá tu cuenta <i class="far fa-address-card"></i>
-							</a>
-						</li>
-						<li>
-							<a href="login.html">Ingresá <i class="fas fa-sign-in-alt"></i></a>
-						</li> -->
-				</ul>
-			</nav>
-		</div>
-	</header>
+	<%- include("./partials/headerLogueado")  %>
 	<!-- /Header -->
 
 	<!-- Novedades -->
@@ -85,12 +28,26 @@
 				<h2 class="products-title">Agregar productos</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario para agregar prodcutos al catálogo. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos. <br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
-			</h2>
+			
+			<form action="/" method="GET">
+				<div>
+					<label for="img">Imagen:</label>
+					<input id="img" type="file" name="img" value="">
+				</div>
+				<div>
+					<label for="prod">Producto:</label>
+					<input id="prod" type="text" name="prod" value="">
+				</div>
+				<div>
+					<label for="desc">Descripción:</label>
+					<input id="desc" type="text" name="desc" value="">
+				</div>
+				<div>
+					<a href="/" class="volver_index">
+					<button type="submit">Enviar</button>
+					</a>
+				</div>
+			</form>
 
 
 	<!-- footer -->
