@@ -8,4 +8,6 @@ datos = {
         fotoPerfil: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf0LuMnGHfTMV19hjWkwWApf2Whm2ulDBL8uJtq7CBcg&s"
     },
     productos: [{}],
-}
+};
+
+module.exports = datos;

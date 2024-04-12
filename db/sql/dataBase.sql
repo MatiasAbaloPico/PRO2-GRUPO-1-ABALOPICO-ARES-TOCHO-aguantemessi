@@ -3,7 +3,7 @@ CREATE SCHEMA ti;
 USE ti;
 
 CREATE TABLE `usuarios` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned PRIMARY KEY AUTO_INCREMENT,
   `nombre` varchar(250) NOT NULL,
   `apellido` varchar(250) NOT NULL,
   `mail` varchar(250) NOT NULL,
@@ -15,5 +15,4 @@ CREATE TABLE `usuarios` (
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `deletedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8
+);
