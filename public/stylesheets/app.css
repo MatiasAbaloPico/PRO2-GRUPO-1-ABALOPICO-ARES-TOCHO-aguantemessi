@@ -4,9 +4,9 @@
 
 /*====== Variables ======*/
 :root {
-  --yellow: #EAC926;
+  --yellow: #35333c;
   --dark-blue: #03264C;
-  --light-blue: #1259c3;
+  --light-blue: #0c4b0b;
   --gray: #666666;
   --light-gray: #ebebeb;
   --green: #39b54a;
@@ -29,7 +29,7 @@ body {
 body {
   font-family: var(--base-font-family);
   font-weight: 300;
-  background-color: var(--light-gray);
+  background-color: #44414e;
 }
 
 ul,
@@ -42,7 +42,7 @@ ol {
 a {
   display: inline-block;
   text-decoration: none;
-  color: inherit;
+  color: #ccc;
 }
 
 figure {
@@ -80,6 +80,12 @@ hr {
   font-size: 1.5em;
   margin-top: 20px;
   text-align: center;
+  color:#ccc;
+}
+
+.logo {
+  border-radius: 20px;
+  width: 70%;
 }
 
 .search-form {
@@ -137,6 +143,7 @@ hr {
   border: 0px;
   cursor: pointer;
   font-size: 1em;
+  color: #ccc;
 }
 
 .logout:hover{
@@ -154,10 +161,12 @@ hr {
 
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/img-home-banner.jpg);
+  padding-top: 100px;
+  
+  background-image: url(/images/homeRolex.webp);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: center -180px;
   height: 100px;
 }
 
@@ -171,7 +180,7 @@ hr {
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
-  color: var(--gray);
+  color: white;
 }
 
 .product-box {
@@ -196,12 +205,14 @@ hr {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  
 }
 
 .product-box_data h2 {
   font-size: 2.4em;
   font-weight: 300;
   margin: 0;
+  color: #03264C;
 }
 
 .product-box_data span {
@@ -405,6 +416,7 @@ hr {
   border-bottom: 1px solid #dcdcdc;
   display: flex;
   justify-content: space-between;
+  
 }
 .comments img{
   width: 40px;
@@ -418,6 +430,7 @@ hr {
 .comments p{
   font-size: 1.5em;
   margin-top: 0;
+  
 }
 .comments .user{
   font-size: 1.7em;
