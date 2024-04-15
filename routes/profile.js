@@ -1,3 +1,4 @@
+var datos = require("../db/datos");
 var express = require('express');
 var router = express.Router();
 const profileController = require("../controller/profileController")
