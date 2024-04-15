@@ -30,3 +30,18 @@ CREATE TABLE productos (
   KEY idUsuario (idUsuario),
   CONSTRAINT productos_ibfk_1 FOREIGN KEY (idUsuario) REFERENCES usuarios (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8
+
+CREATE TABLE comentarios (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  idPost int(10) unsigned DEFAULT NULL,
+  idUsuario int(10) unsigned DEFAULT NULL,
+  textoComentario varchar(250) NOT NULL,
+  createdAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updatedAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  deletedAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY idUsuario (idUsuario),
+  KEY idPost (idPost),
+  CONSTRAINT comentarios_ibfk_1 FOREIGN KEY (idUsuario) REFERENCES usuarios (id),
+  CONSTRAINT comentarios_ibfk_2 FOREIGN KEY (idPost) REFERENCES productos (id)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8
