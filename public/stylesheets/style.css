@@ -1,9 +1,78 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  
 }
 
 a {
   color: #00B7FF;
+
 }
 
+.main-header {
+  font-family: "Josefin Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.main-footer {
+  font-family: "Josefin Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.formulario {
+  max-width: 400px; /* Ajusta el ancho máximo según sea necesario */
+  margin: 0 auto; /* Centra el formulario horizontalmente */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* grupos de entrada (input-group) */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* Espacio entre los grupos de entrada */
+}
+
+/* grupos de entrada */
+.input-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/*campos de entrada */
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="password"],
+.input-group input[type="date"],
+.input-group input[type="number"],
+.input-group input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Asegura que el padding no afecte al ancho total */
+}
+
+/* enviar */
+.formulario button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Agrega una transición suave al color de fondo */
+}
+
+.formulario button[type="submit"]:hover {
+  background-color: #0056b3;
+}
