@@ -1,4 +1,5 @@
 var datos = require("../db/datos");
+const db = require("../database/models")
 const usersController ={
     profile: function(req, res, next) {
         res.render('profile', { title: 'Express' },
