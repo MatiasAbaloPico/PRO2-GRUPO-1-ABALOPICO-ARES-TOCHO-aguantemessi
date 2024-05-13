@@ -10,7 +10,7 @@ const indexController ={
     .then(function (result) {
       return res.render("product", {datos: result})
     }).catch(function (err) {
-      console.log(err);
+      return console.log(err);
     });*/
     },
     register: function(req, res, next) {

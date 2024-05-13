@@ -8,6 +8,24 @@ module.exports = function(sequelize, dataTypes){
             autoIncrement: true,
             primaryKey: true,
             type: dataTypes.INTEGER
+        },
+        idPost: {
+            type: dataTypes.INTEGER
+        },
+        idUsuario: {
+            type: dataTypes.INTEGER
+        },
+        textoComentario: {
+            type: dataTypes.STRING
+        },
+        createdAt: {
+            type: dataTypes.TIME
+        },
+        updatedAt: {
+            type: dataTypes.TIME
+        },
+        deletedAt: {
+            type: dataTypes.TIME
         }
     }
 
