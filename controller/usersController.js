@@ -2,12 +2,12 @@ var datos = require("../db/datos");
 const db = require("../database/models")
 const usersController ={
     profile: function(req, res, next) {
-        res.render('profile', { title: 'Express' },
-        res.render("profile", {datos: datos}));
+        
+        res.render("profile", {datos: datos});
       },
       profileEdit: function(req, res, next) {
-        res.render('profile-edit', { title: 'Express' },
-        res.render("profile-edit", {datos: datos}));
+        
+        res.render("profile-edit", {datos: datos});
       },
   }
   
