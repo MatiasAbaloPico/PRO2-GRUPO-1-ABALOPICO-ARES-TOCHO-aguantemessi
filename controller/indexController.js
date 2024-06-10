@@ -4,14 +4,16 @@ const db = require("../database/models")
 const indexController ={
   index: function(req, res, next) {
     
-      res.render("index", {datos: datos});
+     
 
-    /*db.Producto.findAll()
-    .then(function (result) {
-      return res.render("product", {datos: result})
+
+
+    db.Producto.findAll()
+    .then(function (datos) {
+      return res.render("index", {datos: datos})
     }).catch(function (err) {
       return console.log(err);
-    });*/
+    });
     },
     register: function(req, res, next) {
       res.render("register", {datos: datos});
