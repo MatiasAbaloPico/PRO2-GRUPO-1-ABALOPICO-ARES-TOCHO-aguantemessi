@@ -26,7 +26,7 @@
 		<div class="container products-wrapper">
 			<div class="d-flex align-items-center">
 				<h2 class="products-title">
-					<%= datos.productos[1].producto %>
+					<%= datos.nombreProducto %>
 				</h2>
 				<p class="product-detail-description">
 					<a href="product-add">Editar</a>
@@ -35,28 +35,13 @@
 			<div class="product-detail">
 				<div class="row">
 					<article class="col-12 col-lg-8 product-detail-info">
-						<img src="<%= datos.productos[1].imagen %>" alt="" class="product-detail-img">
+						<img src="<%= datos.imagenProducto %>" alt="" class="product-detail-img">
 						<p class="product-detail-description">
-							<%= datos.productos[1].descripcion %>
+							<%= datos.descripcion%>
 						</p>
 					</article>
 					<div class="col-12 col-lg-4">
-						<section class="comments">
-							<% for( i=0; i < datos.productos[1].comentarios.length; i++){ %>
-								<article>
-									<img src="<%= datos.productos[1].comentarios[i].imagenPerfil %>" alt="">
-									<div class="data">
-										<p class="user">
-											<strong> <a href="profile">
-													<%= datos.productos[1].comentarios[i].nombreUsuario %>:
-												</a> </strong>
-											<%= datos.productos[1].comentarios[i].textoComentario %>
-										</p>
-									</div>
-								</article>
-								<% } %>
 
-						</section>
 						<form class="form" action="product" method="GET">
 							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 							<div>

@@ -1,15 +1,15 @@
-var datos = require("../db/datos");
+
 const db = require("../database/models")
 const productController = {
   product: function (req, res, next) {
+    let id = req.params.id
+    db.Producto.findByPk(id)
+      .then((result) => {
+        return res.render("product", { datos: result })
+      }).catch((err) => {
+        console.log(err);
+      });
 
-    res.render("product", { datos: datos });
-    /*db.Producto.findAll()
-    .then(function (result) {
-      return res.render("product", {datos: result})
-    }).catch(function (err) {
-      console.log(err);
-    });*/
   },
   searchResults: function (req, res, next) {
 
