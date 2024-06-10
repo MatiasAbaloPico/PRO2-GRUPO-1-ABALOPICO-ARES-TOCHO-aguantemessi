@@ -16,8 +16,9 @@
 	<link rel="stylesheet" href="/stylesheets/app.css">
 	<link rel="stylesheet" href="/stylesheets/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+		rel="stylesheet">
 </head>
 
 <body>
@@ -72,24 +73,28 @@
 					<h2 class="products-title">Más comentados</h2>
 				</div>
 				<!-- Show the "ultimos" products -->
-				
-				
+
+
 				<% for(let i=6; i < 10; i++){ %>
 					<div class="col-12 col-sm-6 col-lg-3">
 						<section class="product-box">
-							<a href="product">
+							<a href="product/<%=  datos[i].id %>">
 								<figure class="product-box_image">
 									<img src="<%= datos[i].imagenProducto %>" alt="foto" class="imgProduct">
 								</figure>
 								<article class="product-box_data">
-								<h2><%= datos[i].nombreProducto %></h2>
-									<p><%= datos[i].descripcion %></p>
+									<h2>
+										<%= datos[i].nombreProducto %>
+									</h2>
+									<p>
+										<%= datos[i].descripcion %>
+									</p>
 								</article>
 							</a>
 						</section>
 					</div>
-				<% } %>
-				
+					<% } %>
+
 			</div>
 		</div>
 		<!-- /Más comentados -->

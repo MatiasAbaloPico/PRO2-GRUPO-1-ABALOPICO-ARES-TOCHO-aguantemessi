@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,60 +16,66 @@
 	<link rel="stylesheet" href="/stylesheets/app.css">
 	<link rel="stylesheet" href="/stylesheets/style.css">
 </head>
+
 <body>
 	<!-- Header -->
-	
-	<!-- /Header -->
-	<%- include("./partials/header")  %>
-	<!-- product detail -->
-	<div class="container products-wrapper">
-		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= datos.productos[1].producto %></h2> 
-			<p class="product-detail-description">
-				<a href="product-add">Editar</a>
-			</p>
-		</div>
-		<div class="product-detail">
-			<div class="row">
-				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="<%= datos.productos[1].imagen %>" alt="" class="product-detail-img">
-					<p class="product-detail-description">
-						<%= datos.productos[1].descripcion %>
-					</p>
-				</article>
-				<div class="col-12 col-lg-4">
-					<section class="comments">
-						<% for( i = 0; i < datos.productos[1].comentarios.length; i++){ %>
-						<article>
-							<img src="<%= datos.productos[1].comentarios[i].imagenPerfil %>" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="profile"><%= datos.productos[1].comentarios[i].nombreUsuario %>: </a> </strong>
-								<%= datos.productos[1].comentarios[i].textoComentario %>
-								</p>
-							</div>
-						</article>
-						<% } %>
 
-					</section>
-					<form class="form" action="product" method="GET">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-						<div>
-							<a href="product" class="volver_index">
-							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-							</a>
-						</div>
-					</form>
-					<hr>
+	<!-- /Header -->
+	<%- include("./partials/header") %>
+		<!-- product detail -->
+		<div class="container products-wrapper">
+			<div class="d-flex align-items-center">
+				<h2 class="products-title">
+					<%= datos.productos[1].producto %>
+				</h2>
+				<p class="product-detail-description">
+					<a href="product-add">Editar</a>
+				</p>
+			</div>
+			<div class="product-detail">
+				<div class="row">
+					<article class="col-12 col-lg-8 product-detail-info">
+						<img src="<%= datos.productos[1].imagen %>" alt="" class="product-detail-img">
+						<p class="product-detail-description">
+							<%= datos.productos[1].descripcion %>
+						</p>
+					</article>
+					<div class="col-12 col-lg-4">
+						<section class="comments">
+							<% for( i=0; i < datos.productos[1].comentarios.length; i++){ %>
+								<article>
+									<img src="<%= datos.productos[1].comentarios[i].imagenPerfil %>" alt="">
+									<div class="data">
+										<p class="user">
+											<strong> <a href="profile">
+													<%= datos.productos[1].comentarios[i].nombreUsuario %>:
+												</a> </strong>
+											<%= datos.productos[1].comentarios[i].textoComentario %>
+										</p>
+									</div>
+								</article>
+								<% } %>
+
+						</section>
+						<form class="form" action="product" method="GET">
+							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+							<div>
+								<a href="product" class="volver_index">
+									<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+								</a>
+							</div>
+						</form>
+						<hr>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- /product detail -->
+		<!-- /product detail -->
 
-	<!-- footer -->
-	<%- include("./partials/footer")  %>
-	<!-- /footer -->
+		<!-- footer -->
+		<%- include("./partials/footer") %>
+			<!-- /footer -->
 
-</body>	
+</body>
+
 </html>

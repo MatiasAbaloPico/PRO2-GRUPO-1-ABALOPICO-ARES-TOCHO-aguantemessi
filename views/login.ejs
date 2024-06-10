@@ -19,41 +19,41 @@
 
 <body>
 	<!-- Header -->
-	<%- include("./partials/header")  %>
-	<!-- /Header -->
+	<%- include("./partials/header") %>
+		<!-- /Header -->
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="formulario">
-			<div class="col-12">
-				<h2 class="products-title">Ingresar</h2>
+		<!-- Novedades -->
+		<div class="container products-wrapper">
+			<div class="formulario">
+				<div class="col-12">
+					<h2 class="products-title">Ingresar</h2>
+				</div>
+
+				<form action="/" method="GET">
+					<div class="input-group">
+						<label for="mail">Email:</label>
+						<input id="mail" type="email" name="mail" value="">
+					</div>
+					<div class="input-group">
+						<label for="contrasenia">Contraseña:</label>
+						<input id="contrasenia" type="password" name="contrasenia" value="">
+					</div>
+					<div class="input-group">
+						<label for="recordame">Recordame</label>
+						<input id="recordame" type="checkbox" name="recordame" value="recordame">
+					</div>
+					<div class="input-group">
+						<a href="/" class="volver_index">
+							<button type="submit">Enviar</button>
+						</a>
+					</div>
+				</form>
 			</div>
-			
-			<form action="/" method="GET">
-				<div class="input-group">
-					<label for="mail">Email:</label>
-					<input id="mail" type="email" name="mail" value="">
-				</div>
-				<div class="input-group">
-					<label for="contrasenia">Contraseña:</label>
-					<input id="contrasenia" type="password" name="contrasenia" value="">
-				</div>
-				<div class="input-group">
-					<label for="recordame">Recordame</label>
-					<input id="recordame" type="checkbox" name="recordame" value="recordame">
-				</div>
-				<div class="input-group">
-					<a href="/" class="volver_index">
-					<button type="submit">Enviar</button>
-					</a>
-				</div>
-			</form>
 		</div>
-	</div>
 
-	<!-- footer -->
-	<%- include("./partials/footer")  %>
-	<!-- /footer -->
+		<!-- footer -->
+		<%- include("./partials/footer") %>
+			<!-- /footer -->
 </body>
 
 </html>

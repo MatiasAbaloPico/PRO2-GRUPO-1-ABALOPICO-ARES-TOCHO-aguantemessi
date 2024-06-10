@@ -16,7 +16,7 @@ CREATE TABLE `usuarios` (
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `deletedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+);
 
 CREATE TABLE `productos` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -30,7 +30,7 @@ CREATE TABLE `productos` (
   PRIMARY KEY (`id`),
   KEY `idUsuario` (`idUsuario`),
   CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+);
 
 CREATE TABLE `comentarios` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -45,7 +45,7 @@ CREATE TABLE `comentarios` (
   KEY `idPost` (`idPost`),
   CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`id`),
   CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `productos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+);
 
 
 INSERT INTO `usuarios` VALUES (1,'Lionel','Messi','@lmessi','ellio','**********','1111-12-03',45219070,'foto.png','2024-04-08 15:53:52','2024-04-08 15:53:52','2024-04-08 15:53:52'),(2,'Martin','Menem','@mmessi','elor','**********','1111-12-03',45000070,'foto.png','2024-04-08 15:53:52','2024-04-08 15:53:52','2024-04-08 15:53:52'),(3,'Juan','Tera','@mtera','ewrgor','**********','1111-12-03',45987070,'foto.png','2024-04-08 15:53:52','2024-04-08 15:53:52','2024-04-08 15:53:52'),(4,'Tadeo','Legrand','@tlegrand','eltade','**********','1111-12-03',45011170,'foto.png','2024-04-08 15:53:52','2024-04-08 15:53:52','2024-04-08 15:53:52'),(5,'Tadeo','Legrand','@tlegrand','eltade','**********','1111-12-03',45011170,'foto.png','2024-04-08 15:53:52','2024-04-08 15:53:52','2024-04-08 15:53:52');
