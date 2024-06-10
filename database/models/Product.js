@@ -40,8 +40,9 @@ module.exports = function (sequelize, dataTypes) {
     let Producto = sequelize.define(alias, cols, config)
 
     Producto.associate = function (models) {
+        /* Acá va el has many de models.Comentario */
         Producto.belongsTo(models.Usuario, {
-            as: "productOw",
+            as: "usuario",
             foreignKey: "idUsuario"
         })
     }
