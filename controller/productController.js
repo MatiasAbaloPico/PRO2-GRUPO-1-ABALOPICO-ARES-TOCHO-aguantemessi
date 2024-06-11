@@ -10,6 +10,19 @@ const productController = {
         console.log(err);
       });
 
+      db.Producto.findAll( {
+        include: [
+          {association: "usuario"},
+          {association: "producto"},
+          {association: "comentario"}
+        ] 
+      })
+        .then((result) => {
+          return res.render("product", { datos: result })
+        }).catch((err) => {
+          console.log(err);
+        });
+
   },
   searchResults: function (req, res, next) {
 
