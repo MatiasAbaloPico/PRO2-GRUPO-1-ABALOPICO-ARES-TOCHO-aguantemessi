@@ -52,16 +52,16 @@ module.exports = function (sequelize, dataTypes) {
     }
 
     /* define Modelo */
-    let Usuario = sequelize.define(alias, cols, config)
+    let Usuario = sequelize.define(alias, cols, config);
 
     /* hacemos las relaciones */
     Usuario.associate = function (models) {
         Usuario.hasMany(models.Comentario, {
-            as: "comentario",
+            as: "comentados",
             foreignKey: "idUsuario"
         }),
             Usuario.hasMany(models.Producto, {
-                as: "producto",
+                as: "productos",
                 foreignKey: "idUsuario"
             })
     }

@@ -41,7 +41,21 @@
 						</p>
 					</article>
 					<div class="col-12 col-lg-4">
+						<section class="comments">
+							<% for( i=0; i < datos.comentarios.length; i++){ %>
+								<article>
+									<div class="data">
+										<p class="user">
+											<strong> <a href="profile">
+													<%= datos.comentarios[i].idUsuario %>:
+												</a> </strong>
+											<%= datos.comentarios[i].textoComentario %>
+										</p>
+									</div>
+								</article>
+								<% } %>
 
+						</section>
 						<form class="form" action="product" method="GET">
 							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 							<div>
