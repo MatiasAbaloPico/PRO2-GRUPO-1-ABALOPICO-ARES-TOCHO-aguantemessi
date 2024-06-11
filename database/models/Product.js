@@ -40,7 +40,10 @@ module.exports = function (sequelize, dataTypes) {
     let Producto = sequelize.define(alias, cols, config)
 
     Producto.associate = function (models) {
-        /* Acá va el has many de models.Comentario */
+        Producto.hasMany(models.Comentario, {
+            as: "comentario",
+            boreignKey: "idPost"
+        }),
         Producto.belongsTo(models.Usuario, {
             as: "usuario",
             foreignKey: "idUsuario"
@@ -49,3 +52,4 @@ module.exports = function (sequelize, dataTypes) {
 
     return Producto;
 };
+
