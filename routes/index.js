@@ -8,6 +8,9 @@ router.get('/', indexController.index);
 router.get('/register', indexController.register);
 router.get('/login', indexController.login);
 
+/* POST --> procesamos la info del formulario */
+router.post('/register', indexController.almacenar);
+
 
 
 module.exports = router;
