@@ -26,12 +26,12 @@
 		<section class="info-usuario container products-wrapper">
 			<div class="row">
 				<div class="img-container offset-3 col-2">
-					<img src="<%= datos.usuario.fotoPerfil %>" alt="foto de perfil" class="foto-perfil">
+					<img src="<%= datos.foto %>" alt="foto de perfil" class="foto-perfil">
 				</div>
 				<div class="data-container col-6">
 					<div class="d-flex align-items-center ">
 						<h1 class="main-title">
-							<%= datos.usuario.usuario %>
+							<%= datos.usuario %>
 								<a href="profile-edit">
 									<i class="fas fa-cog"></i>
 								</a>
@@ -41,7 +41,7 @@
 					<div>
 						<ul class="">
 							<li>
-								<%= datos.productos.length %> productos
+								 productos
 							</li>
 							<li>200 seguidores</li>
 							<li>300 comentarios</li>
@@ -63,28 +63,27 @@
 
 
 
-				<% for(let i=0; i < datos.productos.length; i++) { %>
+				
 					<div class="col-12 col-sm-6 col-lg-3">
 						<section class="product-box">
 							<a href="product">
 								<figure class="product-box_image">
-									<img src="<%= datos.productos[i].imagen %>" alt="cafetera moulinex"
+									<img src="" alt="cafetera moulinex"
 										class="imgProduct">
 								</figure>
 								<article class="product-box_data">
 									<h2>
-										<%= datos.productos[i].producto %>
+										
 									</h2>
 									<p>
-										<%= datos.productos[i].descripcion %>
+										
 									</p>
-									<p>Comentarios: <%= datos.productos[i].comentarios.length %>
+									<p>Comentarios: 
 									</p>
 								</article>
 							</a>
 						</section>
 					</div>
-					<% } %>
 
 			</div>
 		</div>

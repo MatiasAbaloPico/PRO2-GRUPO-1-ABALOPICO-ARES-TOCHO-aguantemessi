@@ -29,7 +29,7 @@
 					<%= datos.nombreProducto %>
 				</h2>
 				<p class="product-detail-description">
-					<a href="product-add">Editar</a>
+					<a href="/product-edit/<%= datos.id %>">Editar</a>
 				</p>
 			</div>
 			<div class="product-detail">
@@ -46,7 +46,7 @@
 								<article>
 									<div class="data">
 										<p class="user">
-											<strong> <a href="profile">
+											<strong> <a href="/profile/<%= datos.comentarios[i].idUsuario %>">
 													<%= datos.comentarios[i].idUsuario %>:
 												</a> </strong>
 											<%= datos.comentarios[i].textoComentario %>
@@ -59,7 +59,7 @@
 						<form class="form" action="product" method="GET">
 							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 							<div>
-								<a href="product" class="volver_index">
+								<a href="/product" class="volver_index">
 									<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 								</a>
 							</div>

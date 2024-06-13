@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link width="" rel="shortcut icon" href="/images/rolexLogo.png" />
+
+	<title> Rolex</title>
+	<!-- Font Awesome Stylesheet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<!-- Bootstrap Grid Stylesheet -->
+	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
+	<!-- Own Stylesheet -->
+	<link rel="stylesheet" href="/stylesheets/app.css">
+	<link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+	<!-- Header -->
+	<%- include("./partials/headerLogueado") %>
+		<!-- /Header -->
+
+		<!-- Novedades -->
+		<div class="container products-wrapper">
+			<div class="formulario">
+				<div class="col-12">
+					<h2 class="products-title">Editar producto</h2>
+				</div>
+				<!-- Show the "ultimos" products -->
+
+				<form action="/" method="GET">
+					<div class="input-group">
+						<label for="img">Imagen:</label>
+						<input id="img" type="file" name="img" value="">
+					</div>
+					<div class="input-group">
+						<label for="prod">Producto:</label>
+						<input id="prod" type="text" name="prod" value="">
+					</div>
+					<div class="input-group">
+						<label for="desc">Descripción:</label>
+						<input id="desc" type="text" name="desc" value="">
+					</div>
+					<div input-group>
+						<a href="/" class="volver_index">
+							<button type="submit">Enviar</button>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+		<!-- footer -->
+		<%- include("./partials/footer") %>
+			<!-- /footer -->
+</body>
+
+</html>

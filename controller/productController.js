@@ -16,12 +16,21 @@ const productController = {
       });
   },
   searchResults: function (req, res, next) {
-
-    res.render("search-results", { datos: datos });
+    res.render("search-results", { datos: datos});
   },
   productAdd: function (req, res, next) {
 
-    res.render("product-add", { datos: datos });
+    res.render("product-add", { datos: datos});
+  },
+  productEdit: function (req, res, next) {
+    let id = req.params.id
+    db.Producto.findByPk(id)
+      .then((result) => {
+        res.render("product-edit", { datos: result});
+      }).catch((err) => {
+        console.log(err);
+      });
+    
   },
 }
 
