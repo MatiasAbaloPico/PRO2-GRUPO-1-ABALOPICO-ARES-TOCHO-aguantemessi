@@ -19,15 +19,30 @@ const indexController = {
   },
   almacenar: function(req, res){
     let form = req.body; /* <----- acá guardamos la información del formulario */
-    db.Usuario.create(form )
-    .then(function (result) {
+    req.session.datosForm = form
 
+    let registracion = {
+      mail: form.mail,
+      usuario: form.usuario,
+      nombre: form.nombre,
+      apellido: form.apellido,
+      contrasenia: form.contrasenia, /* <---- acá voy a tener que hacer hash */
+      fechaNacimiento: form.fechaNacimiento,
+      dni: form.dni,
+      foto: form.foto,
+    }
+    
+    
+    
+    db.Usuario.create(registracion)
+    .then(function (result) {
+      return res.redirect("/")
     })
     .catch(function (err) {
         return console.log(err);
       })
-
-    return res.redirect("/")
+      
+    
   },
 }
 
