@@ -1,6 +1,7 @@
 var datos = require("../db/datos");
 const db = require("../database/models");
 const bcryptjs = require("bcryptjs");
+const { validationResult } = require("express-validator");
 
 const indexController = {
   index: function (req, res, next) {
@@ -19,6 +20,12 @@ const indexController = {
     res.render("login", { datos: datos });
   },
   almacenar: function(req, res){
+    let errores = validationResult(req);
+    if (errores.isEmpty()) {
+
+    } else {
+      
+    }
     let form = req.body; /* <----- acá guardamos la información del formulario */
     req.session.datosForm = form
 
