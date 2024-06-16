@@ -1,5 +1,6 @@
 var datos = require("../db/datos");
-const db = require("../database/models")
+const db = require("../database/models");
+const bcryptjs = require("bcryptjs");
 
 const indexController = {
   index: function (req, res, next) {
@@ -26,7 +27,7 @@ const indexController = {
       usuario: form.usuario,
       nombre: form.nombre,
       apellido: form.apellido,
-      contrasenia: form.contrasenia, /* <---- acá voy a tener que hacer hash */
+      contrasenia: bcryptjs.hashSync(form.contrasenia, 10), /* <---- acá voy a tener que hacer hash */
       fechaNacimiento: form.fechaNacimiento,
       dni: form.dni,
       foto: form.foto,
