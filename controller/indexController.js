@@ -1,4 +1,4 @@
-var datos = require("../db/datos");
+
 const db = require("../database/models");
 const bcryptjs = require("bcryptjs");
 const { validationResult } = require("express-validator");
@@ -14,10 +14,14 @@ const indexController = {
       });
   },
   register: function (req, res, next) {
-    res.render("register", { datos: datos });
+      if (req.session.user != undefined) {
+       return res.redirect("/");
+    } else {
+        return res.render("register")
+    }
   },
   login: function (req, res, next) {
-    res.render("login", { datos: datos });
+    res.render("login");
   },
   almacenar: function(req, res){
 
@@ -36,7 +40,7 @@ const indexController = {
         fechaNacimiento = 0
       }
 
-      let registracion = {
+      let user = {
         mail: form.mail,
         usuario: form.usuario,
         nombre: form.nombre,
@@ -47,9 +51,9 @@ const indexController = {
         foto: form.foto,
       }
       
-      db.Usuario.create(registracion)
+      db.Usuario.create(user)
       .then(function (result) {
-        return res.redirect("/")
+        return res.redirect("/login")
       })
       .catch(function (err) {
           return console.log(err);
@@ -63,6 +67,45 @@ const indexController = {
     }
     
       
+  },
+  loginUser: (req, res)=>{
+    let form = req.body;
+
+    let filtro = {
+        where: [{mail: form.mail}]
+    };
+
+    db.Usuario.findOne(filtro)
+    .then((result) => {
+
+        if (result == null) return res.send("No existe el mail " +  form.mail)
+
+
+        let check = bcryptjs.compareSync(form.contrasenia, result.contrasenia);
+        if (check) {
+            req.session.user = result;
+
+            /* que lo guarde en cookie si el usuario lo tildo */
+            if (form.rememberme != undefined) {
+                res.cookie("idUsuario", result.id, {maxAge: 1000 * 60 * 15});
+            }
+            return res.redirect("/");
+        } else {
+            return res.send("La contraseña es incorrecta")
+        }
+
+
+
+    }).catch((err) => {
+        return console.log(err);
+    });
+
+
+  },
+  logout: function(req, res) {
+    req.session.destroy();
+    res.clearCookie("idUsuario")
+    return res.redirect("/")
   },
 }
 

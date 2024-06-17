@@ -1,4 +1,4 @@
-var datos = require("../db/datos");
+
 const db = require("../database/models")
 const usersController = {
   profile: function (req, res, next) {
@@ -12,7 +12,7 @@ const usersController = {
   },
   profileEdit: function (req, res, next) {
     
-    res.render("profile-edit", { datos: datos });
+    res.render("profile-edit");
   },
 }
 
