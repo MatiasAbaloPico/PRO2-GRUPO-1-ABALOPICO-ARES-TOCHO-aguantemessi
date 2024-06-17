@@ -30,41 +30,45 @@
 				</div>
 				<!-- Show the "ultimos" products -->
 
-				<!-- acá empezamos las views de validar formularios -->
+				<% if (locals.errors) {
+					errors.forEach(error => { %>
+					<p> <%= error.msg %> </p>
+				<% })
+					 } %>
 
 				<form action="/register" method="POST">
 					<div class="formulario">
 						<div class="input-group">
 							<label for="mail">Email:</label>
-							<input id="mail" type="email" name="mail" value="">
+							<input id="mail" type="email" name="mail" value="<%= locals.old && old.mail ? old.mail : "" %>">
 						</div>
 						<div class="input-group">
 							<label for="usuario">Nombre de Usuario:</label>
-							<input id="usuario" type="text" name="usuario" value="">
+							<input id="usuario" type="text" name="usuario" value="<%= locals.old && old.usuario ? old.usuario : "" %>">
 						</div>
 						<div class="input-group">
 							<label for="nombre">Nombre: </label>
-							<input id="nombre" type="text" name="nombre" value="">
+							<input id="nombre" type="text" name="nombre" value="<%= locals.old && old.nombre ? old.nombre : "" %>">
 						</div>
 						<div class="input-group">
 							<label for="apellido">Apellido:</label>
-							<input id="apellido" type="text" name="apellido" value="">
+							<input id="apellido" type="text" name="apellido" value="<%= locals.old && old.apellido ? old.apellido : "" %>">
 						</div>
 						<div class="input-group">
 							<label for="contrasenia">Contraseña:</label>
-							<input id="contrasenia" type="password" name="contrasenia" value="">
+							<input id="contrasenia" type="password" name="contrasenia" value="<%= locals.old && old.contrasenia ? old.contrasenia : "" %>">
 						</div>
 						<div class="input-group">
 							<label for="fechaNacimiento">Fecha de nacimiento:</label>
-							<input id="fechaNacimiento" type="date" name="fechaNacimiento" value="">
+							<input id="fechaNacimiento" type="date" name="fechaNacimiento" value="<%= locals.old && old.fechaNacimiento ? old.fechaNacimiento : "" %>">
 						</div>
 						<div class="input-group">
 							<label for="dni">DNI:</label>
-							<input id="dni" type="number" name="dni" value="">
+							<input id="dni" type="number" name="dni" value="<%= locals.old && old.dni ? old.dni : "" %>">
 						</div>
 						<div class="input-group">
 							<label for="foto">Foto de perfil:</label>
-							<input id="foto" type="text" name="foto" value="">
+							<input id="foto" type="text" name="foto" value="<%= locals.old && old.foto ? old.foto : "" %>">
 						</div>
 						<button type="submit">Enviar</button>
 					</div>
