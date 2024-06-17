@@ -27,6 +27,14 @@ const indexController = {
       
       let form = req.body; /* <----- acá guardamos la información del formulario */
       req.session.datosForm = form
+      let dni = form.dni 
+      if (dni === ''){
+          dni = 0
+      }
+      let fechaNacimiento = form.fechaNacimiento
+      if (fechaNacimiento === ''){
+        fechaNacimiento = 0
+      }
 
       let registracion = {
         mail: form.mail,
@@ -34,8 +42,8 @@ const indexController = {
         nombre: form.nombre,
         apellido: form.apellido,
         contrasenia: bcryptjs.hashSync(form.contrasenia, 10), /* <---- acá voy a tener que hacer hash */
-        fechaNacimiento: form.fechaNacimiento,
-        dni: form.dni,
+        fechaNacimiento: fechaNacimiento,
+        dni: dni,
         foto: form.foto,
       }
       
