@@ -29,6 +29,6 @@ router.get('/login', indexController.login);
 /* POST --> procesamos la info del formulario */
 router.post('/register', validaciones ,indexController.almacenar);
 router.post("/login", validaciones, indexController.loginUser);
-
+router.post("/logout", indexController.logout)
 
 module.exports = router;

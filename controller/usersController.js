@@ -3,9 +3,14 @@ const db = require("../database/models")
 const usersController = {
   profile: function (req, res, next) {
     let id = req.params.id
-    db.Usuario.findByPk(id)
+    let filtrado = {
+      include: [
+        {association: "productos",}
+      ]
+    };
+    db.Usuario.findByPk(id, filtrado)
       .then((result) => {
-        res.render("profile", { datos: result });
+        return res.render("profile", { datos: result });
       }).catch((err) => {
         console.log(err);
       });

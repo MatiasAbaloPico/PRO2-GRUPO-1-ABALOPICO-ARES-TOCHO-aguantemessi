@@ -5,9 +5,10 @@ const productController = {
     let id = req.params.id
     let filtrado = {
       include: [
-        {association: "comentarios"},
+        {association: "comentarios",
+                        include: [{association: "usuarios"}]}
       ]
-    }
+    };
     db.Producto.findByPk(id, filtrado)
       .then((result) => {
         return res.render("product", { datos: result })

@@ -47,10 +47,10 @@ module.exports = function (sequelize, dataTypes) {
             as: "comentarios",
             foreignKey: "idPost"
         })
-        /*Producto.belongsTo(models.Usuario, {
+        Producto.belongsTo(models.Usuario, {
             as: "usuario",
             foreignKey: "idUsuario"
-        })*/
+        })
     }
 
     return Producto;
