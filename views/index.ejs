@@ -60,11 +60,9 @@
 										<%= datos[i].nombreProducto %>
 									</h2>
 									<p>
-										<%= datos[i].usuario.usuario %>
+										<a href="/profile/<%= datos[i].idUsuario %>"><%= datos[i].usuario.usuario %></a>
 									</p>
-									<p>
-										<%= datos[i].usuario.mail %>
-									</p>
+									
 								</article>
 							</a>
 						</section>
