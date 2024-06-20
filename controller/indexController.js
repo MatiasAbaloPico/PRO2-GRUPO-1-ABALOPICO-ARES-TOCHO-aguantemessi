@@ -77,6 +77,7 @@ const indexController = {
       
   },
   loginUser: (req, res)=>{
+    let errors = validationResult(req); /* Tenemos que usar validations para renderizar los errores y sacar el res.send */
     let form = req.body;
 
     let filtro = {
@@ -86,7 +87,7 @@ const indexController = {
     db.Usuario.findOne(filtro)
     .then((result) => {
 
-        if (result == null) return res.send("No existe el mail " +  form.mail)
+        if (result == null) return res.render("No existe el mail " +  form.mail)
 
 
         let check = bcryptjs.compareSync(form.contrasenia, result.contrasenia);
