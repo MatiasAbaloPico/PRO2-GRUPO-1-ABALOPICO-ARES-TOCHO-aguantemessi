@@ -87,7 +87,7 @@ const indexController = {
     db.Usuario.findOne(filtro)
     .then((result) => {
 
-        if (result == null) return res.render("No existe el mail " +  form.mail)
+        if (result == null) return res.send("No existe el mail " +  form.mail)
 
 
         let check = bcryptjs.compareSync(form.contrasenia, result.contrasenia);
