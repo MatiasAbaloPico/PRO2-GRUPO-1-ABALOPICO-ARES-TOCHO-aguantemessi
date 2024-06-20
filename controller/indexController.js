@@ -1,4 +1,4 @@
-
+const { Association } = require("sequelize");
 const db = require("../database/models");
 const bcryptjs = require("bcryptjs");
 const { validationResult } = require("express-validator");
@@ -6,7 +6,15 @@ const { validationResult } = require("express-validator");
 const indexController = {
   index: function (req, res, next) {
 
-    db.Producto.findAll()
+    let filtrado = {
+      include: [
+        {association: "comentarios"},
+        {association: "usuario"},
+      ],
+      order: [["createdAt", "DESC"]],
+    };
+
+    db.Producto.findAll(filtrado)
       .then(function (datos) {
         return res.render("index", { datos: datos })
       }).catch(function (err) {
