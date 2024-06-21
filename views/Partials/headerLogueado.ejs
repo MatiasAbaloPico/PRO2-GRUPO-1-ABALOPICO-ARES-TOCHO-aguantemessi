@@ -56,14 +56,17 @@
 				</ul>
 
 				<ul class="right-navbar">
-					<li><a href="/profile/<%= locals.user.id %>">
+					<li>
+						
+						<a href="/profile/<%= locals.user.id %>">
 							<%=locals.user.usuario%> <i class="fas fa-user"></i>
 						</a>
 					</li>
 					<li>
-						<a href="/">
-							Cerrar sesión <i class="fas fa-user"></i>
-						</a>
+						<form action="/logout" method="post">
+							<button type="submit" class="btn-form">Logout</button>
+						  </form>
+						
 					</li>
 					<!-- Solo deslogueado <li>
 						<a href="register.html">Creá tu cuenta <i class="far fa-address-card"></i>
