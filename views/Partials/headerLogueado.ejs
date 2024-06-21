@@ -56,12 +56,14 @@
 				</ul>
 
 				<ul class="right-navbar">
-					<li><a href="/profile/<%= locals.user.id %>">
+					<li>
+						
+						<a href="/profile/<%= locals.user.id %>">
 							<%=locals.user.usuario%> <i class="fas fa-user"></i>
 						</a>
 					</li>
 					<li>
-						<a href="/logout">
+						<a href="/">
 							Cerrar sesión <i class="fas fa-user"></i>
 						</a>
 					</li>
