@@ -1,5 +1,5 @@
-const { Association } = require("sequelize");
-const db = require("../database/models")
+const { Association, Op } = require("sequelize");
+const db = require("../database/models");
 const productController = {
   product: function (req, res, next) {
     let id = req.params.id
@@ -17,7 +17,28 @@ const productController = {
       });
   },
   searchResults: function (req, res, next) {
-    res.render("search-results");
+
+    //console.log(req)
+    let buscado = req.query.search
+    db.Producto.findAll({
+      where: {
+        [Op.or]: {
+          nombreProducto: { [Op.like]:  `%${buscado}%`},
+          descripcion: { [Op.like]:  `%${buscado}%`}
+        }
+      },
+      include: [
+        {association: "comentarios"},
+        {association: "usuario"},
+      ],
+      order: [["createdAt", "DESC"]],
+    })
+    .then((result) => {
+      console.log(result.map(x => x.get({ plain: true })))
+      return res.render("search-results", { productos: result.map(x => x.get({ plain: true })) })
+    }).catch((err) => {
+      console.log(err);
+    });
   },
   productAdd: function (req, res, next) {
 
