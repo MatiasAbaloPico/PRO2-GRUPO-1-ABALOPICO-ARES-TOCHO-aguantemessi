@@ -87,7 +87,7 @@ const indexController = {
     db.Usuario.findOne(filtro)
       .then((result) => {
 
-        if (result == null) return res.send("No existe el mail " + form.mail)
+        if (result == null) return res.render("login", {errors: errors.array(),old: req.body});
 
 
         let check = bcryptjs.compareSync(form.contrasenia, result.contrasenia);
@@ -100,7 +100,7 @@ const indexController = {
           }
           return res.redirect("/");
         } else {
-          return res.send("La contraseña es incorrecta")
+          return res.render("login", {errors: errors.array(),old: req.body});
         }
 
 
