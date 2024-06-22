@@ -17,8 +17,7 @@ router.get('/product-add/', productController.productAdd);
 
 /* POST */
 router.post('/product-save/', validacionesP, productController.productSave);
-
-
+router.post("/:id", productController.comentario);
 /* DELETE */
 router.post('/product-delete/:id/', productController.productDelete);
 
