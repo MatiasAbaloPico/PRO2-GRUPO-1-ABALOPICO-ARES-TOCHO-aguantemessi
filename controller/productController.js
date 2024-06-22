@@ -172,9 +172,18 @@ const productController = {
     }
   },
   comentario: function(req, res, next){
-    let errors = validationResult(req);
+    let errors = validationResult(req); // acá tenemos los mensajes de errores
 
-    let datosComentario = req.body;
+    let datosComentario = req.body; // acá tenemos la información que pone el usuario en el comentario
+    
+    
+    if (req.session.user != undefined) {
+      res.send(datosComentario)
+    } else {
+      res.send("debes estar logueado")
+    }
+    
+
 
   },
 }
