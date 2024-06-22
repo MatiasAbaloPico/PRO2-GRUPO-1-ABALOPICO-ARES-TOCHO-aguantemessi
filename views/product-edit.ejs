@@ -19,47 +19,62 @@
 
 <body>
 	<!-- Header -->
-	<% if (locals.user != undefined) { %>
+	<% if (locals.user !=undefined) { %>
 		<%- include('./partials/headerLogueado') %>
-	 <% } else { %>
-		<%- include('./partials/header') %>
-	<% } %>
-		<!-- /Header -->
+			<% } else { %>
+				<%- include('./partials/header') %>
+					<% } %>
+						<!-- /Header -->
 
-		<!-- Novedades -->
-		<div class="container products-wrapper">
-			<div class="formulario">
-				<div class="col-12">
-					<h2 class="products-title">Editar producto</h2>
-				</div>
-				<!-- Show the "ultimos" products -->
+						<!-- Novedades -->
+						<div class="container products-wrapper">
+							<div class="formulario">
+								<div class="col-12">
+									<h2 class="products-title">Editar producto</h2>
+								</div>
+								<!-- Show the "ultimos" products -->
 
-				<form action="/" method="GET">
-					<div class="input-group">
-						<label for="img">Imagen:</label>
-						<input id="img" type="file" name="img" value="">
-					</div>
-					<div class="input-group">
-						<label for="prod">Producto:</label>
-						<input id="prod" type="text" name="prod" value="">
-					</div>
-					<div class="input-group">
-						<label for="desc">Descripción:</label>
-						<input id="desc" type="text" name="desc" value="">
-					</div>
-					<div input-group>
-						<a href="/" class="volver_index">
-							<button type="submit">Enviar</button>
-						</a>
-					</div>
-				</form>
-			</div>
-		</div>
+								<% if (locals.errors) { errors.forEach(error=> { %>
+									<p>
+										<%= error.msg %>
+									</p>
+									<% }) } %>
+
+										<form action="/product-save" method="post">
+											<input id="idProducto" type="hidden" name="idProducto"
+												value="<%= datos.id %>">
+											<input id="idUsuario" type="hidden" name="idUsuario"
+												value="<%= datos.usuario.id %>">
+											<input id="imagen" type="hidden" name="imagen"
+												value="<%= datos.imagenProducto %>">
+											<div class="input-group">
+												<label for="img">Imagen:</label>
+												<img src="<%= datos.imagenProducto %>" alt=""
+													class="product-detail-img">
+											</div>
+											<div class="input-group">
+												<label for="prod">Producto:</label>
+												<input id="prod" type="text" name="nombre"
+													value="<%= datos.nombreProducto %>">
+											</div>
+											<div class="input-group">
+												<label for="desc">Descripción:</label>
+												<input id="desc" type="text" name="descripcion"
+													value="<%= datos.descripcion %>">
+											</div>
+											<div input-group>
+												<a href="/" class="volver_index">
+													<button type="submit">Enviar</button>
+												</a>
+											</div>
+										</form>
+							</div>
+						</div>
 
 
-		<!-- footer -->
-		<%- include("./partials/footer") %>
-			<!-- /footer -->
+						<!-- footer -->
+						<%- include("./partials/footer") %>
+							<!-- /footer -->
 </body>
 
 </html>

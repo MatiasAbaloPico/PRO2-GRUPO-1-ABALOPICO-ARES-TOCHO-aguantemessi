@@ -8,8 +8,8 @@ const indexController = {
 
     let filtrado = {
       include: [
-        {association: "comentarios"},
-        {association: "usuario"},
+        { association: "comentarios" },
+        { association: "usuario" },
       ],
       order: [["createdAt", "DESC"]],
     };
@@ -22,29 +22,29 @@ const indexController = {
       });
   },
   register: function (req, res, next) {
-      if (req.session.user != undefined) {
-       return res.redirect("/");
+    if (req.session.user != undefined) {
+      return res.redirect("/");
     } else {
-        return res.render("register")
+      return res.render("register")
     }
   },
   login: function (req, res, next) {
     res.render("login");
   },
-  almacenar: function(req, res){
+  almacenar: function (req, res) {
 
     let errors = validationResult(req);
-    
+
     if (errors.isEmpty()) {
-      
+
       let form = req.body; /* <----- acá guardamos la información del formulario */
       req.session.datosForm = form
-      let dni = form.dni 
-      if (dni === ''){
-          dni = 0
+      let dni = form.dni
+      if (dni === '') {
+        dni = 0
       }
       let fechaNacimiento = form.fechaNacimiento
-      if (fechaNacimiento === ''){
+      if (fechaNacimiento === '') {
         fechaNacimiento = 0
       }
 
@@ -58,60 +58,60 @@ const indexController = {
         dni: dni,
         foto: form.foto,
       }
-      
+
       db.Usuario.create(user)
-      .then(function (result) {
-        return res.redirect("/login")
-      })
-      .catch(function (err) {
+        .then(function (result) {
+          return res.redirect("/login")
+        })
+        .catch(function (err) {
           return console.log(err);
-      })
+        })
 
     } else {
-      res.render("register", { 
+      res.render("register", {
         errors: errors.array(),
-        old: req.body 
+        old: req.body
       });
     }
-    
-      
+
+
   },
-  loginUser: (req, res)=>{
+  loginUser: (req, res) => {
     let errors = validationResult(req); /* Tenemos que usar validations para renderizar los errores y sacar el res.send */
     let form = req.body;
 
     let filtro = {
-        where: [{mail: form.mail}]
+      where: [{ mail: form.mail }]
     };
 
     db.Usuario.findOne(filtro)
-    .then((result) => {
+      .then((result) => {
 
-        if (result == null) return res.send("No existe el mail " +  form.mail)
+        if (result == null) return res.send("No existe el mail " + form.mail)
 
 
         let check = bcryptjs.compareSync(form.contrasenia, result.contrasenia);
         if (check) {
-            req.session.user = result;
+          req.session.user = result;
 
-            /* que lo guarde en cookie si el usuario lo tildo */
-            if (form.rememberme != undefined) {
-                res.cookie("idUsuario", result.id, {maxAge: 1000 * 60 * 15});
-            }
-            return res.redirect("/");
+          /* que lo guarde en cookie si el usuario lo tildo */
+          if (form.rememberme != undefined) {
+            res.cookie("idUsuario", result.id, { maxAge: 1000 * 60 * 15 });
+          }
+          return res.redirect("/");
         } else {
-            return res.send("La contraseña es incorrecta")
+          return res.send("La contraseña es incorrecta")
         }
 
 
 
-    }).catch((err) => {
+      }).catch((err) => {
         return console.log(err);
-    });
+      });
 
 
   },
-  logout: function(req, res) {
+  logout: function (req, res) {
     req.session.destroy();
     res.clearCookie("idUsuario")
     return res.redirect("/")
