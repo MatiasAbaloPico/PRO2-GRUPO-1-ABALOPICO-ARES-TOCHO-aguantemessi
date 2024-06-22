@@ -182,7 +182,7 @@ const productController = {
         res.send(errors) // acá hay que hacer el redirect a product con los mensajes de error
       }
     } else {
-      res.send("debes estar logueado") // acá hay que renderizar al login
+      res.render("login")
     }
   },
 }

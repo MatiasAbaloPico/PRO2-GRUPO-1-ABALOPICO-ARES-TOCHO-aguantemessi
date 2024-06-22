@@ -21,65 +21,65 @@
 		rel="stylesheet">
 </head>
 
-<body>
-	<!-- Header -->
-	<% if (locals.user !=undefined) { %>
-		<%- include('./partials/headerLogueado') %>
-			<% } else { %>
-				<%- include('./partials/header') %>
-					<% } %>
-						<!-- /Header -->
-						<hr>
-						<!-- Banner -->
-						<div class="banner">
+	<body>
+			<!-- Header -->
+		<% if (locals.user !=undefined) { %>
+			<%- include('./partials/headerLogueado') %>
+		<% } else { %>
+			<%- include('./partials/header') %>
+		<% } %>
+			<!-- /Header -->
+			<hr>
+			<!-- Banner -->
+			<div class="banner">
 
-						</div>
-						<!-- /Banner -->
-
-
-						<hr>
-						<!-- Novedades -->
-						<div class="container products-wrapper">
-							<div class="row">
-								<div class="col-12">
-									<h2 class="products-title">Todos los productos</h2>
-								</div>
-								<!-- Show the "ultimos" products -->
-
-								<!-- Probamos que funcione traer datos-->
-
-								<% for(let i=0; i < datos.length; i++){ %>
-									<div class="col-12 col-sm-6 col-lg-3">
-										<section class="product-box">
-											<a href="product/<%=  datos[i].id %>">
-												<figure class="product-box_image">
-													<img src="<%= datos[i].imagenProducto %>" alt="foto"
-														class="imgProduct">
-												</figure>
-												<article class="product-box_data">
-													<h2>
-														<%= datos[i].nombreProducto %>
-													</h2>
-													<p>
-														<a href="/profile/<%= datos[i].idUsuario %>">
-															<%= datos[i].usuario.usuario %>
-														</a>
-													</p>
-
-												</article>
-											</a>
-										</section>
-									</div>
-									<% } %>
-							</div>
-						</div>
-						<!-- /Novedades -->
+			</div>
+			<!-- /Banner -->
 
 
+		<hr>
+		<!-- Novedades -->
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title">Todos los productos</h2>
+				</div>
+				<!-- Show the "ultimos" products -->
 
-						<!-- footer -->
-						<%- include("./partials/footer") %>
-							<!-- /footer -->
-</body>
+				<!-- Probamos que funcione traer datos-->
+
+				<% for(let i=0; i < datos.length; i++){ %>
+					<div class="col-12 col-sm-6 col-lg-3">
+						<section class="product-box">
+							<a href="product/<%=  datos[i].id %>">
+								<figure class="product-box_image">
+									<img src="<%= datos[i].imagenProducto %>" alt="foto"
+										class="imgProduct">
+								</figure>
+								<article class="product-box_data">
+									<h2>
+										<%= datos[i].nombreProducto %>
+									</h2>
+									<p>
+										<a href="/profile/<%= datos[i].idUsuario %>">
+											<%= datos[i].usuario.usuario %>
+										</a>
+									</p>
+
+								</article>
+							</a>
+						</section>
+					</div>
+				<% } %>
+			</div>
+		</div>
+		<!-- /Novedades -->
+
+
+
+		<!-- footer -->
+		<%- include("./partials/footer") %>
+			<!-- /footer -->
+	</body>
 
 </html>
