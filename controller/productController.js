@@ -171,6 +171,9 @@ const productController = {
 
     }
   },
+  comentario: function(req, res, next){
+
+  },
 }
 
 module.exports = productController;
