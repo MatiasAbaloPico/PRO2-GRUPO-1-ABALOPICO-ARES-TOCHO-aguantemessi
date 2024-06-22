@@ -172,6 +172,9 @@ const productController = {
     }
   },
   comentario: function(req, res, next){
+    let errors = validationResult(req);
+
+    let datosComentario = req.body;
 
   },
 }
