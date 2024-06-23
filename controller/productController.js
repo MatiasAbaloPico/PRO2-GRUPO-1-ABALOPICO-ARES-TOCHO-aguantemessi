@@ -57,14 +57,16 @@ const productController = {
     if (req.session.user != undefined) {
       if (errors.isEmpty()){
         let idUsuario = req.session.user.id
+        let idProducto = req.params.id
         let comentario = {
           comentario: datosComentario.comentario,
           idUsuario: idUsuario,
-          idProducto: req.params.id
+          idProducto: idProducto
         }
-        db.Comentario.create(datosComentario.comentario)
+        res.send(comentario)
+        db.Comentario.create(comentario)
         .then ((result) => {
-          return res.redirect("/product", { datos: result })
+          return res.redirect("/product/${idProducto}")
         }).catch((err) => {
           console.log(err)
         })
