@@ -50,81 +50,29 @@ const productController = {
     res.render("product-add");
     }
   },
-  productSave: function (req, res, next) {
-
-    console.log('productSave body', req.body)
-
-    let form = req.body;
-    let product = {
-      idUsuario: form.idUsuario,
-      nombreProducto: form.nombre,
-      descripcion: form.descripcion,
-      imagenProducto: form.imagen,
-    }
-
+  almacenar: function(req, res, next) {
     let errors = validationResult(req);
+
     if (errors.isEmpty()) {
-
-      if (form.idProducto) {
-
-        product = {
-          nombreProducto: form.nombre,
-          descripcion: form.descripcion,
-        }
-
-        db.Producto.update(
-          {
-            nombreProducto: form.nombre,
-            descripcion: form.descripcion,
-          },
-          {
-            where: {
-              id: form.idProducto,
-            },
-          },
-        ).then(function (result) {
-          return res.redirect("/");
-        })
-          .catch(function (err) {
-            return console.log(err);
-          });
-      } else {
-
-        db.Producto.create(product)
+      let form = req.body;
+      let product = {
+        idUsusario: locals.user.id,
+        nombreProducto: form.prod,
+        descripcion: form.desd,
+        imagenProducto: form.img,
+      }
+      db.Product.create(product)
           .then(function (result) {
-            return res.redirect("/");
-          })
+           return res.redirect("/")
+         })
           .catch(function (err) {
-            return console.log(err);
-          })
-      }
+           return console.log(err);
+         })
     } else {
-
-      if (form.idProducto) {
-
-        let filtrado = {
-          include: [
-            { association: "usuario" },
-            { association: "comentarios", include: [{ association: "usuarios" }] }
-          ]
-        };
-        db.Producto.findByPk(form.idProducto, filtrado)
-          .then((result) => {
-            res.render("product-edit", {
-              datos: result,
-              errors: errors.array(),
-              old: req.body
-            });
-          }).catch((err) => {
-            console.log(err);
-          });
-      } else {
-        res.render("product-add", {
-          errors: errors.array(),
-          old: req.body
-        });
-      }
-
+      res.send("product-add", {
+        errors: errors.array(),
+        old: req.body
+      });
     }
   },
   productEdit: function (req, res, next) {
