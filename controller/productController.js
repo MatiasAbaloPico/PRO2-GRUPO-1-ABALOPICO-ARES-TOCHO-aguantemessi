@@ -87,12 +87,12 @@ const productController = {
     if (errors.isEmpty()) {
       let form = req.body;
       let product = {
-        idUsusario: locals.user.id,
+        idUsuario: req.session.user.id,
         nombreProducto: form.prod,
-        descripcion: form.desd,
+        descripcion: form.desc,
         imagenProducto: form.img,
       }
-      db.Product.create(product)
+      db.Producto.create(product)
           .then(function (result) {
            return res.redirect("/")
          })
@@ -100,7 +100,7 @@ const productController = {
            return console.log(err);
          })
     } else {
-      res.send("product-add", {
+      res.render("product-add", {
         errors: errors.array(),
         old: req.body
       });

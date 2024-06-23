@@ -5,9 +5,12 @@ const productController = require("../controller/productController");
 const { body } = require("express-validator");
 
 const validacionesAdd = [
-    body("img").notEmpty().withMessage("Debes completar el campo imagen"),
-    body("prod").notEmpty().withMessage("Debes completar el campo nombre"),
-    body("desc").notEmpty().withMessage("Debes completar el campo descripcion"),
+    body("img").notEmpty().withMessage("Debes completar el campo imagen")
+    .isLength({ max: 250 }).withMessage("La imagen debe tener menos de 250 caracteres"),
+    body("prod").notEmpty().withMessage("Debes completar el campo nombre")
+    .isLength({ max: 250 }).withMessage("El nombre debe tener menos de 250 caracteres"),
+    body("desc").notEmpty().withMessage("Debes completar el campo descripcion")
+    .isLength({ max: 250 }).withMessage("La descripcion debe tener menos de 250 caracteres"),
 ];
 
 const validacionComentario= [
