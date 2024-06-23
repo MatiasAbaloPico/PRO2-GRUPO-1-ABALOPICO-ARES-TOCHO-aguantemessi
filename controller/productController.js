@@ -65,7 +65,7 @@ const productController = {
         }
         db.Comentario.create(comentario)
         .then ((result) => {
-          return res.render("product")
+          return res.redirect("product/${idProducto}")
         }).catch((err) => {
           console.log(err)
         })
