@@ -16,8 +16,22 @@ const usersController = {
       });
   },
   profileEdit: function (req, res, next) {
-    
-    res.render("profile-edit");
+   if (req.session.user == undefined){
+     return res.redirect("/login")
+   } else {
+      let id = req.params.id
+      db.Usuario.findByPk(id)
+        .then ((result) => {
+          if (req.session.user != result.usuario){
+            return res.redirect("/")
+          }
+        })
+        .then((result) => {
+          return res.render("profile-edit", { datos: result });
+        }).catch((err) => {
+          console.log(err);
+      });
+   }
   },
 }
 

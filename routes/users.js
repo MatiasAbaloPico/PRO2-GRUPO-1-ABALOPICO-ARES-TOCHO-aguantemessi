@@ -4,6 +4,6 @@ const usersController = require("../controller/usersController");
 
 /* GET home page. */
 router.get('/profile/:id/', usersController.profile);
-router.get('/profile-edit/', usersController.profileEdit);
+router.get('/profile-edit/:id/', usersController.profileEdit);
 
 module.exports = router;

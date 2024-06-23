@@ -44,7 +44,11 @@ const productController = {
       });
   },
   productAdd: function (req, res, next) {
+    if (req.session.user == undefined){
+      return res.redirect("/login")
+    } else {
     res.render("product-add");
+    }
   },
   productSave: function (req, res, next) {
 
