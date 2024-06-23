@@ -71,17 +71,21 @@ const productController = {
         })
 
       } else {
+          
           res.send(errors)
-        //res.redirect("product/${id}", {
-        //  errors: errors.array(),
-        //  old: req.body
-        //}) // acá hay que hacer el redirect a product con los mensajes de error
-      }
+
+
+          //res.redirect(`/product`, {
+            //errors: errors.array(),
+           // old: req.body
+          //});
+        }
+      
     } else {
       res.render("login")
     }
   },
-  almacenar: function(req, res, next) {
+   almacenar: function(req, res) {
     let errors = validationResult(req);
 
     if (errors.isEmpty()) {
