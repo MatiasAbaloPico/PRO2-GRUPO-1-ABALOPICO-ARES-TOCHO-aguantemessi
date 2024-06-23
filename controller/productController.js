@@ -50,6 +50,37 @@ const productController = {
     res.render("product-add");
     }
   },
+  comentario: function(req, res, next){
+    let errors = validationResult(req); // acá tenemos los mensajes de errores
+    
+    if (req.session.user != undefined) {
+      
+      if (errors.isEmpty()){
+        
+        let id = req.params.id
+        let datosComentario = req.body
+        datosComentario.idUsusario = req.session.user.id
+        datosComentario.idPost = req.params.id
+
+        res.send(datosComentario)
+        //db.Comentario.create(datosComentario)
+        //.then ((result) => {
+        //  return res.redirect("product/${id}")
+        //}).catch((err) => {
+        //  console.log(err)
+        //})
+    
+      } else {
+          res.send(errors)
+        //res.redirect("product/${id}", {
+        //  errors: errors.array(),
+        //  old: req.body
+        //}) // acá hay que hacer el redirect a product con los mensajes de error
+      }
+    } else {
+      res.render("login")
+    }
+  },
   almacenar: function(req, res, next) {
     let errors = validationResult(req);
 
@@ -121,20 +152,6 @@ const productController = {
           console.log(err);
         });
 
-    }
-  },
-  comentario: function(req, res, next){
-    let errors = validationResult(req); // acá tenemos los mensajes de errores
-    let datosComentario = req.body; // acá tenemos la información que pone el usuario en el comentario
-
-    if (req.session.user != undefined) {
-      if (errors.isEmpty()){
-        res.send(datosComentario) // acá hay que agregar el comentario a la base de datos (parte más larga del punto)
-      } else{
-        res.send(errors) // acá hay que hacer el redirect a product con los mensajes de error
-      }
-    } else {
-      res.render("login")
     }
   },
 }
