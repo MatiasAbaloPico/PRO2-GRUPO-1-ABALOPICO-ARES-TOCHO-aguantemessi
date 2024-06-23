@@ -52,11 +52,11 @@ const productController = {
   },
   comentario: function(req, res, next){
     let errors = validationResult(req); // acá tenemos los mensajes de errores
-    
+
     if (req.session.user != undefined) {
-      
+
       if (errors.isEmpty()){
-        
+
         let id = req.params.id
         let datosComentario = req.body
         datosComentario.idUsusario = req.session.user.id
@@ -69,7 +69,7 @@ const productController = {
         //}).catch((err) => {
         //  console.log(err)
         //})
-    
+
       } else {
           res.send(errors)
         //res.redirect("product/${id}", {
