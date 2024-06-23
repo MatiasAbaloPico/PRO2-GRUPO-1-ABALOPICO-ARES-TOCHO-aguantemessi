@@ -59,14 +59,13 @@ const productController = {
         let idUsuario = req.session.user.id
         let idProducto = req.params.id
         let comentario = {
-          comentario: datosComentario.comentario,
+          idPost: idProducto,
           idUsuario: idUsuario,
-          idProducto: idProducto
+          textoComentario: datosComentario.comentario,
         }
-        res.send(comentario)
         db.Comentario.create(comentario)
         .then ((result) => {
-          return res.redirect("/product/${idProducto}")
+          return res.render("product")
         }).catch((err) => {
           console.log(err)
         })
