@@ -33,13 +33,13 @@
 					<h2 class="products-title">Editar mi perfil</h2>
 				</div>
 				<!-- Show the "ultimos" products -->
-				<form action="/" method="GET">
+				<form action="/profile-edit/" method="POST">
 					<div class="input-group">
-						<label for="mail">Email:</label>
+						<label for="mail">Emali actual: <%= locals.user.mail %></label>
 						<input id="mail" type="email" name="mail" value="">
 					</div>
 					<div class="input-group">
-						<label for="usuario">Usuario:</label>
+						<label for="usuario">Usuario actual: <%= locals.user.usuario %></label>
 						<input id="usuario" type="text" name="usuario" value="">
 					</div>
 					<div class="input-group">
@@ -55,8 +55,8 @@
 						<input id="dni" type="number" name="dni" value="">
 					</div>
 					<div class="input-group">
-						<label for="pp">Foto de perfil:</label>
-						<input id="pp" type="text" name="pp" value="">
+						<label for="pp">Foto de perfil: <%= locals.user.foto %></label>
+						<input id="pp" type="text" name="img" value="">
 					</div>
 					<div class="input-group">
 						<a href="/" class="volver_index">
