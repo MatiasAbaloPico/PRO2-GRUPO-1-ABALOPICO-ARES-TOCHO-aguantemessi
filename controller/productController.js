@@ -126,6 +126,47 @@ const productController = {
       });
 
   },
+  save: function (req, res) {
+
+    let errors = validationResult(req);
+    let form = req.body; /* <----- acá guardamos la información del formulario */
+    req.session.datosForm = form
+    let id = req.session.user.id
+
+    let filtro = {
+      where: [{ idUsuario : id }]
+  };
+
+    let save = {
+      nombreProducto: form.prod,
+      descripcion: form.desc,
+    }
+
+    if (errors.isEmpty()) {
+
+      db.Usuario.update(save, filtro)
+        .then(function (result) {
+          return res.redirect("/")
+        })
+        .catch(function (err) {
+          return console.log(err);
+        })
+
+    } else {
+      db.Usuario.findByPk(id)
+        .then(function (resultado) {
+          return res.render('product-edit', {
+            errors: errors.array(),
+            old: req.body,
+            lista: resultado
+          });
+
+        }).catch(function (errores) {
+          return console.log(errores);;
+        })
+    }
+  },
+
   productDelete: function (req, res, next) {
 
     console.log(req.params)
