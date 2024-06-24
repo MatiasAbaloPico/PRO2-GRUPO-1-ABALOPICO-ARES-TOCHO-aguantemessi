@@ -40,7 +40,7 @@
 									</p>
 									<% }) } %>
 
-										<form action="/product-save" method="post">
+										<form action="/product-edit" method="POST">
 											<input id="idProducto" type="hidden" name="idProducto"
 												value="<%= datos.id %>">
 											<input id="idUsuario" type="hidden" name="idUsuario"
@@ -54,12 +54,12 @@
 											</div>
 											<div class="input-group">
 												<label for="prod">Producto:</label>
-												<input id="prod" type="text" name="nombre"
+												<input id="prod" type="text" name="prod"
 													value="<%= datos.nombreProducto %>">
 											</div>
 											<div class="input-group">
 												<label for="desc">Descripción:</label>
-												<input id="desc" type="text" name="descripcion"
+												<input id="desc" type="text" name="desc"
 													value="<%= datos.descripcion %>">
 											</div>
 											<div input-group>

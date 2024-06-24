@@ -33,7 +33,12 @@
 					<h2 class="products-title">Editar mi perfil</h2>
 				</div>
 				<!-- Show the "ultimos" products -->
-				<form action="/profile-edit/" method="POST">
+				<% if (locals.errors) {
+					errors.forEach(error => { %>
+					<p> <%= error.msg %> </p>
+				<% })
+					 } %>
+				<form action="/profile-edit" method="POST">
 					<div class="input-group">
 						<label for="mail">Emali actual: <%= locals.user.mail %></label>
 						<input id="mail" type="email" name="mail" value="">

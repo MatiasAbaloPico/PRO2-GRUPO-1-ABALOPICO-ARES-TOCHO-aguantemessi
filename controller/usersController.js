@@ -1,12 +1,13 @@
 
 const db = require("../database/models")
 const { validationResult } = require("express-validator");
+const bcryptjs = require("bcryptjs");
 const usersController = {
   profile: function (req, res, next) {
     let id = req.params.id
     let filtrado = {
       include: [
-        {association: "productos",}
+        { association: "productos", }
       ]
     };
     db.Usuario.findByPk(id, filtrado)
@@ -17,13 +18,13 @@ const usersController = {
       });
   },
   profileEdit: function (req, res, next) {
-   if (req.session.user == undefined){
-     return res.redirect("/login")
-   } else {
+    if (req.session.user == undefined) {
+      return res.redirect("/login")
+    } else {
       let id = req.params.id
       db.Usuario.findByPk(id)
-        .then ((result) => {
-          if (req.session.user.usuario != result.usuario){
+        .then((result) => {
+          if (req.session.user.usuario != result.usuario) {
             return res.redirect("/")
           }
         })
@@ -31,38 +32,60 @@ const usersController = {
           return res.render("profile-edit", { datos: result });
         }).catch((err) => {
           console.log(err);
-      });
-   }
+        });
+    }
   },
   update: function (req, res) {
 
     let errors = validationResult(req);
+    let form = req.body; /* <----- acá guardamos la información del formulario */
+    req.session.datosForm = form
+    let id = req.session.user.id
+
+    let filtro = {
+      where: [{ id : id }]
+  };
+
+    let dni = form.dni
+    if (dni === '') {
+      dni = 0
+    }
+    let fechaNacimiento = form.fecha_nac
+    if (fechaNacimiento === '') {
+      fechaNacimiento = 0
+    }
+
+    let user = {
+      mail: form.mail,
+      usuario: form.usuario,
+      contrasenia: bcryptjs.hashSync(form.contrasenia, 10), /* <---- acá voy a tener que hacer hash */
+      fechaNacimiento: fechaNacimiento,
+      dni: dni,
+      foto: form.img,
+    }
 
     if (errors.isEmpty()) {
 
-      let form = req.body; /* <----- acá guardamos la información del formulario */
-      req.session.datosForm = form
-      
-
-      let user = {
-        mail: form.mail,
-        usuario: form.usuario,
-        contrasenia: bcryptjs.hashSync(form.contrasenia, 10), /* <---- acá voy a tener que hacer hash */
-        foto: form.foto,
-      }
-
-      db.Usuario.update(user)
+      db.Usuario.update(user, filtro)
         .then(function (result) {
-          return res.redirect("/login")
+          return res.redirect("/")
         })
         .catch(function (err) {
           return console.log(err);
         })
 
     } else {
-      return res.render(res.redirect("/profile-edit/"+req.session.user.id), {errors: errors.array(),
-        old: req.body});
-      
+      db.Usuario.findByPk(id)
+        .then(function (resultado) {
+          return res.render('profile-edit', {
+            errors: errors.array(),
+            old: req.body,
+            lista: resultado
+          });
+
+        }).catch(function (errores) {
+          return console.log(errores);;
+        })
     }
 
 

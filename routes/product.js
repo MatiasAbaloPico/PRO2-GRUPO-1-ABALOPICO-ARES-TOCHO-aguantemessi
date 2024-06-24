@@ -13,6 +13,21 @@ const validacionesAdd = [
     .isLength({ max: 250 }).withMessage("La descripcion debe tener menos de 250 caracteres"),
 ];
 
+const validacionesSave = [
+    body("prod").notEmpty().withMessage("Debes completar el campo nombre")
+    .isLength({ max: 250 }).withMessage("El nombre debe tener menos de 250 caracteres")
+    .custom(function (value) {
+        return db.Producto.findOne({
+            where: { prod: value },
+        })
+            .then(function (user) {
+                if (user) {
+                    throw new Error("El producto ingresado ya existe, prueba con otro distinto.")
+                }})}),
+    body("desc").notEmpty().withMessage("Debes completar el campo descripcion")
+    .isLength({ max: 250 }).withMessage("La descripcion debe tener menos de 250 caracteres"),
+];
+
 const validacionComentario= [
     body("comentario")
     .notEmpty().withMessage("Debe completar el campo")
@@ -32,5 +47,6 @@ router.post("/product-add/", validacionesAdd , productController.almacenar)
 router.post("/:id/", validacionComentario, productController.comentario);
 /* DELETE */
 router.post('/product-delete/:id/', productController.productDelete);
+router.post('/product-edit', validacionesSave, productController.save)
 
 module.exports = router;
