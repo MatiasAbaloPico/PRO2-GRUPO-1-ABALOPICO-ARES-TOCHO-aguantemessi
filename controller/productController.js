@@ -55,30 +55,30 @@ const productController = {
     let datosComentario = req.body
 
     if (req.session.user != undefined) {
-      if (errors.isEmpty()){
-        let idUsuario = req.session.user.id
+      let idUsuario = req.session.user.id
         let idProducto = req.params.id
         let comentario = {
           idPost: idProducto,
           idUsuario: idUsuario,
           textoComentario: datosComentario.comentario,
         }
+      if (errors.isEmpty()){
+        
         db.Comentario.create(comentario)
         .then ((result) => {
-          return res.redirect(`/product/${idProducto}`)
+          return res.redirect(`product/${idProducto}`)
         }).catch((err) => {
           console.log(err)
         })
 
       } else {
           
-          res.send(errors)
+        res.redirect(`/product/${idProducto}`)
+       //   res.redirect(`/product/${idProducto}`, {
+       //     errors: errors.array(),
+       //     old: req.body
+       //  })
 
-
-          //res.redirect(`/product`, {
-            //errors: errors.array(),
-           // old: req.body
-          //});
         }
       
     } else {
